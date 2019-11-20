@@ -1,0 +1,49 @@
+.Fajr {
+  background-color: #0630a2;
+  color: #ffffff;
+}
+.Zuhr {
+  background-color: #059a05;
+  color: #ffffff;
+}
+.Asr {
+  background-color: #d67000;
+  color: #ffffff;
+}
+.Maghrib {
+  background-color: #b10841;
+  color: #ffffff;
+}
+.Esha {
+  background-color: #4a0177;
+  color: #ffffff;
+}
+.Jumuah {
+  background-color: #059a05;
+  color: #ffffff;
+}
+.Zawwal {
+    background-color: #b10f0f;
+    color: #FFFFFF;
+}
+.Grey {
+    background-color: #505050;
+    color: #FFFFFF;
+}
+.Black {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.notice.o {
+  background-color: #808080;
+  color: #ffffff;
+}
+.tch {
+  background-color: #045612;
+  color: #ffffff;
+}
+.change-block {
+    background-color: #026cd7;
+    color: #ffffff;
+}
+

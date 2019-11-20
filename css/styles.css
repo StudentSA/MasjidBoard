@@ -1,0 +1,458 @@
+html,body,div,section,article,p,a{
+  text-align: center;
+  font-family: roboto;
+  line-height: 1.16;
+}
+
+html { 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*overflow-y: scroll;*/
+}
+
+body {
+    display: block;
+    margin: 0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: #FFFFFF;
+}
+
+h1 {
+    margin: 5px 0px;
+}
+
+a {
+    margin: auto;
+}
+
+/* unvisited link */
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+li span {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+div.main {
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: rgba(160, 160, 160, 0.9);
+    width: 1000px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 20px;
+}
+
+h1, h2, h3 {
+    font-family: sax-mono, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-size: 25px;
+}
+
+p {
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+section {
+    text-align: center;
+}
+
+footer {
+    width: 100%;
+    color: #ffffff;
+    font-size: large;
+    background-color: #616161;
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 16px 16px;
+    text-align: center;
+}
+
+#nav_name {
+    font-family: sax-mono, sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 30px;
+    padding: 0;
+    line-height: 38px;
+    text-align: left;
+}
+
+#myname {
+    width: 500px;
+    float: left;
+    margin: 0px 0px 0px 20px;
+}
+
+h4 {
+	font-size: 30px;
+	line-height: 40px;
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: center;
+}
+ 
+#textbox {
+	/*stitching*/
+	outline: 1px dashed #98abb9;
+	outline-offset: -5px;
+	
+	background-color: #556068;
+	height: 400px;
+	width: 50%;
+	margin: 40px;
+    padding: 30px;
+	
+	/*shadow*/
+	-webkit-box-shadow: 2px 2px 2px #000;
+	-moz-box-shadow: 2px 2px 2px #000;
+	box-shadow: 2px 2px 2px #000;
+    opacity: 0.8;
+}
+
+.bankdetails_t {
+    margin: auto;
+    width:75%; 
+}
+
+.timebar {
+    background-color: #045612;
+    width: 100%;
+}
+
+.timebar-date {
+    /*float: left;*/
+    display: inline-block;
+    background-color: #045612;
+    color: #ffffff;
+    width: 30%;
+    font-size: 40px;
+    padding: 8px 0px;
+}
+
+.float-box {
+   margin: 8px;
+   padding: 6px;
+   max-width: 300px;
+   width: 190px;
+   /*height: 200px;*/
+   border: 1px solid black;
+   box-shadow: 5px 5px 5px #888888;
+   display: inline-block;
+}
+
+.box-title {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 10px;
+}
+
+.box-time {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: roboto;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.box-break {
+    border-bottom: 2px solid #fff;
+}
+
+
+.float-container {
+    overflow: hidden;
+}
+
+#toggle {
+  display: none;
+  width: 28px;
+  height: 0px;
+  margin: 10px auto 10px;
+}
+
+#toggle span:after,
+#toggle span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -9px;
+}
+#toggle span:after{
+  top: 9px;
+}
+#toggle span {
+  position: relative;
+  display: block;
+}
+
+#toggle span,
+#toggle span:after,
+#toggle span:before {
+  width: 100%;
+  height: 5px;
+  background-color: #888;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+  border-radius: 2px;
+}
+
+/* on activation */
+#toggle.on span {
+  background-color: transparent;
+}
+#toggle.on span:before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#toggle.on span:after {
+  transform: rotate(-45deg) translate(7px, -8px);
+}
+#toggle.on + #menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.notice.o {
+        margin: auto;
+}
+
+.change-box {
+   margin: 5px;
+   padding: 0px;
+   max-width: 600px;
+   min-width: 350px;
+   width: 30%;
+   height: 110px;
+   /* border: 1px solid black; */
+   box-shadow: 5px 5px 5px #888888;
+   display: inline-block;
+   box-sizing: border-box;
+   background-color: #026cd7;
+   color: #ffffff;
+}  
+.block-title {
+    font-size: 26px;
+    font-weight: 400;
+    padding-top: 2px;
+    min-height: 24px;
+} 
+.change-date {
+    border-bottom: 2px solid #fff;
+    min-height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 30px
+}
+.azaan-change {
+    border-right: 1px solid #fff;
+    min-height: 50px;
+    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 30px
+}
+.jamaat-change {
+    border-left: 1px solid #fff;
+    min-height: 50px;
+    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 30px
+}
+.changes {
+    float: left;
+    font-size: 18px;
+    display: table;
+    min-height: 28px;
+}
+.full-width {
+    width:100%;
+}
+.half-width{
+    width: 49%;
+}
+
+div.notifications {
+  opacity:    0.8; 
+  background: #fff; 
+  width:      100%;
+  height:     100%; 
+  z-index:    10;
+  top:        0; 
+  left:       0; 
+  position:   fixed; 
+  visibility: hidden;
+}
+
+
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #fff;
+    /*background: #19c589;*/
+    text-align: center;
+    padding: 10px 0;
+    display: none;
+}
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+}
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+
+
+
+
+@media only screen and (min-width: 700px){
+    .col.m4, .third {
+        width: 30%;
+    }
+}
+
+@media (min-width: 700px) {
+    .big-block {
+        padding: 10px;
+    }
+}
+
+
+.col, .sixth, .quarter, .third, .half, .twothird, .full {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+/*Responsive Styles*/
+/*For Smaller Screens*/
+@media screen and (max-width : 975px){
+    /*Make dropdown links appear inline*/
+    ul {
+        position: static;
+        display: none;
+    }
+    /*Create vertical spacing*/
+    li {
+        margin-bottom: 1px;
+    }
+    /*Make all menu links full width*/
+    ul li, li a {
+        width: 100%;
+    }
+    
+    /*Display 'show menu' link*/
+    .show-menu {
+        display:block;
+    }
+    
+    #toggle {
+        display: block;
+    }
+    
+    #myname {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #nav_name {
+        font-size: 20px;
+        line-height: 40px;
+    }
+    
+    footer {
+        display: none;
+    }
+    
+    .snotice {
+         line-height: 20px;
+         font-size: 15px; 
+    }
+
+    .timebar-date {
+    display: inline-block;
+    background-color: #616161;
+    color: #ffffff;
+    width: 100%;
+    font-size: 28px;
+    padding: 4px 0px;
+}
+}
+
+@media (min-width: 700px) {
+    .box-title {
+        font-size: 24px;
+    }  
+    .notice {
+        font-size: 27px;
+        padding: 13px
+    }
+    .block-title {
+    font-size: 28px;
+}
+}
