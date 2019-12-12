@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php require("./config/config.php"); ?>
 <?php 
-    date_default_timezone_set("Africa/Johannesburg");
+    date_default_timezone_set("Asia/Karachi");
     $date_now=time();
     $tomorrow = strtotime("tomorrow 00:00:00");
     $seconds_remaining = ($tomorrow-$date_now)+5;
@@ -13,7 +13,8 @@
  <link href="./admin/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 <link rel="stylesheet" type="text/css" href="./css/colors.css" />
- 
+<link rel="stylesheet" type="text/css" href="./css/animista.css" />
+
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Ubuntu:300" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="kaba.ico">
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
@@ -26,6 +27,7 @@
 <?php include ("navigation.php"); ?>
 <?php #Get Salaah Times for today.
     $date_now=date("Y-m-d");
+    
     $month=date("m");
     $date=date("d");
     $day=date("l");
@@ -65,11 +67,12 @@
     $esha_c_date=null;
     $esha_c_athaan=null;
     $esha_c_salaah=null;
-
+   
     $changeperiod=$displayChangesWithinDays;
-
+    // var_dump($date_now);die();
     if ($stmt = $conn->prepare("select fajr_athaan, fajr_salaah, zuhr_athaan, zuhr_salaah, asr_athaan, asr_salaah, magrib_athaan, magrib_salaah, esha_athaan, esha_salaah, jummah_athaan, jummah_salaah FROM m_timetable where sdate =?")) {
         /* bind parameters for markers */
+       
         $stmt->bind_param("s", $date_now);
         /* execute query */
         $stmt->execute();
@@ -79,6 +82,7 @@
         if ($stmt->num_rows == 1) {
           $stmt->bind_result($fajr_athaan, $fajr_salaah, $zuhr_athaan, $zuhr_salaah, $asr_athaan, $asr_salaah, $magrib_athaan, $magrib_salaah, $esha_athaan, $esha_salaah, $jummah_athaan, $jummah_salaah);
           $stmt->fetch();
+          
         }
         /* close stmt */
         $stmt->close();
@@ -205,6 +209,8 @@
             $stmt->close();
         }
     }
+
+
 ?>
 <?php include ("timebar.php"); ?>
 
@@ -212,35 +218,45 @@
 
     <div class="float-box Fajr">
         <div class="box-title">Fajr Azaan</div>
-        <div class="box-time box-break"><?= date('h:i',strtotime($fajr_athaan)) ?></div>
+        <div class="box-time box-break azan-checker" data-azan="fajar" data-time="<?= date('m/d/Y h:i:s A',strtotime($date_now." ".$fajr_athaan)) ?>" >
+            <?= date('h:i',strtotime($fajr_athaan)) ?>
+        </div>
         <div class="box-title">Fajr Salaah</div>
         <div class="box-time"><?= date('h:i',strtotime($fajr_salaah)) ?></div>
     </div>
 
     <div class="float-box Zuhr">
         <div class="box-title">Zuhr Azaan</div>
-        <div class="box-time box-break"><?= date('h:i',strtotime($zuhr_athaan)) ?></div>
+        <div class="box-time box-break  azan-checker" data-azan="zuhr" data-time="<?= date('m/d/Y h:i:s A',strtotime($date_now." ".$zuhr_athaan)) ?>" >
+            <?= date('h:i',strtotime($zuhr_athaan)) ?>
+        </div>
         <div class="box-title">Zuhr Salaah</div>
         <div class="box-time"><?= date('h:i',strtotime($zuhr_salaah)) ?></div>
     </div>
 
     <div class="float-box Asr">
         <div class="box-title">Asr Azaan</div>
-        <div class="box-time box-break"><?= date('h:i',strtotime($asr_athaan)) ?></div>
+        <div class="box-time box-break azan-checker" data-azan="asr" data-time="<?= date('m/d/Y h:i:s A',strtotime($date_now." ".$asr_athaan)) ?>">
+            <?= date('h:i',strtotime($asr_athaan)) ?>
+        </div>
         <div class="box-title">Asr Salaah</div>
         <div class="box-time"><?= date('h:i',strtotime($asr_salaah)) ?></div>
     </div>
 
     <div class="float-box Maghrib">
         <div class="box-title">Maghrib Azaan</div>
-        <div class="box-time box-break"><?= date('h:i',strtotime($magrib_athaan)) ?></div>
+        <div class="box-time box-break azan-checker" data-azan="magrib" data-time="<?= date('m/d/Y h:i:s A',strtotime($date_now." ".$magrib_athaan)) ?>">
+            <?= date('h:i',strtotime($magrib_athaan)) ?>
+        </div>
         <div class="box-title">Maghrib Salaah</div>
         <div class="box-time"><?= date('h:i',strtotime($magrib_salaah)) ?></div>
     </div>
 
     <div class="float-box Esha">
         <div class="box-title">Esha Azaan</div>
-        <div class="box-time box-break"><?= date('h:i',strtotime($esha_athaan)) ?></div>
+        <div class="box-time box-break  azan-checker" data-azan="esha" data-time="<?= date('m/d/Y h:i:s A',strtotime($date_now." ".$esha_athaan)) ?>">
+            <?= date('h:i',strtotime($esha_athaan)) ?>
+        </div>
         <div class="box-title">Esha Salaah</div>
         <div class="box-time"><?= date('h:i',strtotime($esha_salaah)) ?></div>
     </div>
