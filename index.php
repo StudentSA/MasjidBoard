@@ -9,8 +9,11 @@
 <html lang="en-us">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap core CSS -->
+ <link href="./admin/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 <link rel="stylesheet" type="text/css" href="./css/colors.css" />
+ 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Ubuntu:300" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="kaba.ico">
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
@@ -21,14 +24,6 @@
 </head>
 <body onload="startTime()">
 <?php include ("navigation.php"); ?>
-
-<!--div class="notifications">
-            <h1 class="display-4">Hadith:</h1>
-            <p class="lead">Hadith Test.xy</p>
-            <hr class="my-4">
-            <p> Sahih abc</p>
-</div-->
-
 <?php #Get Salaah Times for today.
     $date_now=date("Y-m-d");
     $month=date("m");
@@ -284,12 +279,16 @@
 </section>
 <?php
     if ($enableZuhrChanges) {
-        include ("zuhrchangebanner.php");
+        include ("includes/zuhrchangebanner.php");
     }
 
     if ($enableSalaahTimeChanges) {
-        include ("salaahtimechanges.php");
+        include ("includes/salaahtimechanges.php");
     }
+
+    
+        include ("includes/notifications.php");
+    
 ?>
 
 <div style="height='30px'">
