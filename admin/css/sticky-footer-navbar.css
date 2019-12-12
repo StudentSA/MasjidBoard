@@ -35,3 +35,14 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+
+.save-btn{
+  width: 200px; 
+  cursor: pointer;
+}
+
+.align-right{
+  text-align: right;
+  padding: 15px;
+}

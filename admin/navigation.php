@@ -16,7 +16,7 @@
               <a class="nav-link" href="./perpetualcalender.php">Perpetual Calender</a>
             </li>
             <li class="nav-item <?= ($activePage == 'masjidnotices') ? 'active':'';; ?>">
-              <a class="nav-link" href="./masjidnotices.php">Masjid Notices</a>
+              <a class="nav-link" href="./notifications_index.php">Masjid Notices</a>
             </li>
           </ul>
         </div>
@@ -28,3 +28,4 @@
         </span>
       </nav>
     </header>
+    <br/>
