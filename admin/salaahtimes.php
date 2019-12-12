@@ -17,7 +17,8 @@
     $sel_monthName = $dateObj->format('F'); 
     $url=strtok($_SERVER["REQUEST_URI"],'?');
     
-    if(isset($_POST["submit"])) {
+    if(isset($_POST["time_table_id"])) {
+        
         //var_dump($_POST);
         //var_dump($_GET['uid']);
         // Establishing Connection with Server by passing server_name, user_id and password as a parameter
@@ -27,31 +28,38 @@
             die("Connection failed: " . $conn->connect_error);
         } 
         
-        $fajr_athaan=$_POST["fajr_athaan"].":00";
-        $fajr_salaah=$_POST["fajr_salaah"].":00";
-        $zuhr_athaan=$_POST["zuhr_athaan"].":00";
-        $zuhr_salaah=$_POST["zuhr_salaah"].":00";
-        $asr_athaan=$_POST["asr_athaan"].":00";
-        $asr_salaah=$_POST["asr_salaah"].":00";
-        $magrib_athaan=$_POST["magrib_athaan"].":00";
-        $magrib_salaah=$_POST["magrib_salaah"].":00";
-        $esha_athaan=$_POST["esha_athaan"].":00";
-        $esha_salaah=$_POST["esha_salaah"].":00";
-        $jummah_athaan=$_POST["jummah_athaan"].":00";
-        $jummah_salaah=$_POST["jummah_salaah"].":00";
+        $timeTablesId = $_POST['time_table_id'];
         
-        // sql to delete a record
-        $stmt = $conn->prepare("UPDATE m_timetable SET fajr_athaan=?,fajr_salaah=?,zuhr_athaan=?,zuhr_salaah=?,
-                                asr_athaan=?,asr_salaah=?,magrib_athaan=?,magrib_salaah=?,esha_athaan=?,esha_salaah=?,
-                                jummah_athaan=?,jummah_salaah=? WHERE uid=?");
-        $stmt->bind_param("ssssssssssssi",$fajr_athaan , $fajr_salaah,
-                            $zuhr_athaan, $zuhr_salaah, 
-                            $asr_athaan, $asr_salaah, 
-                            $magrib_athaan, $magrib_salaah, 
-                            $esha_athaan, $esha_salaah, 
-                            $jummah_athaan, $jummah_salaah, 
-                            $_GET['uid'] );
-        $stmt->execute();
+
+        foreach( $timeTablesId as $key=>$val){
+
+                $fajr_athaan=$_POST["fajr_athaan"][$key].":00";
+                $fajr_salaah=$_POST["fajr_salaah"][$key].":00";
+                $zuhr_athaan=$_POST["zuhr_athaan"][$key].":00";
+                $zuhr_salaah=$_POST["zuhr_salaah"][$key].":00";
+                $asr_athaan=$_POST["asr_athaan"][$key].":00";
+                $asr_salaah=$_POST["asr_salaah"][$key].":00";
+                $magrib_athaan=$_POST["magrib_athaan"][$key].":00";
+                $magrib_salaah=$_POST["magrib_salaah"][$key].":00";
+                $esha_athaan=$_POST["esha_athaan"][$key].":00";
+                $esha_salaah=$_POST["esha_salaah"][$key].":00";
+                $jummah_athaan=$_POST["jummah_athaan"][$key].":00";
+                $jummah_salaah=$_POST["jummah_salaah"][$key].":00";
+                
+                // sql to update a record
+                $stmt = $conn->prepare("UPDATE m_timetable SET fajr_athaan=?,fajr_salaah=?,zuhr_athaan=?,zuhr_salaah=?,
+                                        asr_athaan=?,asr_salaah=?,magrib_athaan=?,magrib_salaah=?,esha_athaan=?,esha_salaah=?,
+                                        jummah_athaan=?,jummah_salaah=? WHERE uid=?");
+                $stmt->bind_param("ssssssssssssi",$fajr_athaan , $fajr_salaah,
+                                    $zuhr_athaan, $zuhr_salaah, 
+                                    $asr_athaan, $asr_salaah, 
+                                    $magrib_athaan, $magrib_salaah, 
+                                    $esha_athaan, $esha_salaah, 
+                                    $jummah_athaan, $jummah_salaah, 
+                                    $val );
+                $stmt->execute();
+        }
+
         $stmt->close();
         $conn->close();
     }
@@ -175,8 +183,11 @@
                     $result = $conn->query($sql);
                     
                     if ($result->num_rows > 0) {
-                        echo "<table>";
+                        echo "<form  method=\"post\" action=\"".$url."?y=".$sel_year."&m=".$sel_month."&uid=".$row["uid"]."\">
+                        <table>";
                         echo "<thead>";
+                        echo "<tr><td colspan=\"13\"  class=\"align-right\"><input class=\"btn btn-secondary save-btn \" type=\"submit\" value=\"Save\" /></td></tr>";
+
                         echo "<tr>
                                     <th style=\"width: 70px;\">Date</th>
                                     <th>Fajr Athaan</th>
@@ -191,31 +202,38 @@
                                     <th>Esha Salaah</th>           
                                     <th>Jummah Athaan</th>
                                     <th>Jummah Salaah</th>
-                                    <th>Save Row?</th>
+                                    
                              </tr>";       
                         echo "</thead>";
                         echo "<tbody>";              
                         // output data of each row
+
+                      
+
                         while($row = $result->fetch_assoc()) {
-                            echo "<tr><td colspan=\"14\"><form  method=\"post\" action=\"".$url."?y=".$sel_year."&m=".$sel_month."&uid=".$row["uid"]."\"><table><tr>
+                            echo "<tr><td colspan=\"13\"><table><tr>
                                     <td>" . $row["sdate"] . "</td>
-                                    <td><input type=\"text\" name=\"fajr_athaan\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["fajr_athaan"] . "\" value=\"" . $row["fajr_athaan"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"fajr_salaah\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["fajr_salaah"] . "\" value=\"" . $row["fajr_salaah"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"zuhr_athaan\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["zuhr_athaan"] . "\" value=\"" . $row["zuhr_athaan"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"zuhr_salaah\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["zuhr_salaah"] . "\" value=\"" . $row["zuhr_salaah"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"asr_athaan\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["asr_athaan"] . "\" value=\"" . $row["asr_athaan"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"asr_salaah\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["asr_salaah"] . "\" value=\"" . $row["asr_salaah"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"magrib_athaan\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["magrib_athaan"] . "\" value=\"" . $row["magrib_athaan"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"magrib_salaah\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["magrib_salaah"] . "\" value=\"" . $row["magrib_salaah"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"esha_athaan\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["esha_athaan"] . "\" value=\"" . $row["esha_athaan"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"esha_salaah\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["esha_salaah"] . "\" value=\"" . $row["esha_salaah"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"jummah_athaan\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["jummah_athaan"] . "\" value=\"" . $row["jummah_athaan"]  . "\"/></td>
-                                    <td><input type=\"text\" name=\"jummah_salaah\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["jummah_salaah"] . "\" value=\"" . $row["jummah_salaah"]  . "\"/></td>
-                                    <td><input type=\"submit\" name=\"submit\" value=\"Save\"/></td>
-                                 </tr></table></form></td></tr>";
+                                 
+                                    <td><input type=\"hidden\" name=\"time_table_id[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["uid"] . "\" value=\"" . $row["uid"]  . "\"/>
+                                    <input type=\"text\" name=\"fajr_athaan[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["fajr_athaan"] . "\" value=\"" . $row["fajr_athaan"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"fajr_salaah[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["fajr_salaah"] . "\" value=\"" . $row["fajr_salaah"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"zuhr_athaan[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["zuhr_athaan"] . "\" value=\"" . $row["zuhr_athaan"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"zuhr_salaah[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["zuhr_salaah"] . "\" value=\"" . $row["zuhr_salaah"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"asr_athaan[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["asr_athaan"] . "\" value=\"" . $row["asr_athaan"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"asr_salaah[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["asr_salaah"] . "\" value=\"" . $row["asr_salaah"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"magrib_athaan[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["magrib_athaan"] . "\" value=\"" . $row["magrib_athaan"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"magrib_salaah[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["magrib_salaah"] . "\" value=\"" . $row["magrib_salaah"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"esha_athaan[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["esha_athaan"] . "\" value=\"" . $row["esha_athaan"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"esha_salaah[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["esha_salaah"] . "\" value=\"" . $row["esha_salaah"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"jummah_athaan[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["jummah_athaan"] . "\" value=\"" . $row["jummah_athaan"]  . "\"/></td>
+                                    <td><input type=\"text\" name=\"jummah_salaah[]\" id=\"timepicker".$row["uid"]."fa"."\" class=\"timepicker\" ovalue=\"" . $row["jummah_salaah"] . "\" value=\"" . $row["jummah_salaah"]  . "\"/></td>
+                                 
+                                 </tr></table></td></tr>";
                         }
+                        echo "<tr><td colspan=\"13\" class=\"align-right\"><input class=\"btn btn-secondary  save-btn \" type=\"submit\" value=\"Save\" /></td></tr>";
+
                         echo "</tbody>";
-                        echo "</table>";
+                        echo "</table></form>";
                     } else {
                         echo "Table Empty - 0 results";
                     }
