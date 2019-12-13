@@ -12,6 +12,7 @@
 <!-- Bootstrap core CSS -->
  <link href="./admin/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+<link rel="stylesheet" type="text/css" href="./css/skins/<?php echo $themeSkin;?>.css" />
 <link rel="stylesheet" type="text/css" href="./css/colors.css" />
 <link rel="stylesheet" type="text/css" href="./css/animista.css" />
 
