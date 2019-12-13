@@ -20,6 +20,13 @@
     
     <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.bundle.min.js"></script> 
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> 
+    <script>
+    $(document).ready(function() {
+            $('#noticeTable').DataTable();
+        } );
+</script>   
  
   </head>
 
@@ -37,7 +44,7 @@
                     <a href="notifications_submit.php" class="btn btn-success">Create</a>
                 </p>
              
-                <table class="table table-striped table-bordered">
+                <table id="noticeTable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>Title</th>
@@ -72,10 +79,6 @@
                                     </div></td>';
                                       echo '</tr>';
                             }
-                        }else{
-                                  echo '<tr>
-                                          <td colspan="5">No Record Found</td>
-                                        </tr>';
                         }
                       ?>
                       </tbody>
