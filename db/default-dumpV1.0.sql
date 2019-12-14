@@ -1,16 +1,3 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: 67.205.153.83 (MySQL 5.7.22-0ubuntu0.17.10.1)
-# Database: northc_masjid
-# Generation Time: 2019-12-11 15:49:52 +0000
-# ************************************************************
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -37,7 +24,7 @@ LOCK TABLES `admin` WRITE;
 
 INSERT INTO `admin` (`id`, `username`, `password`)
 VALUES
-	(1,'admin','N0rthCl1ffAdm1n@');
+	(1,'admin@localhost.com','test12');
 
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
