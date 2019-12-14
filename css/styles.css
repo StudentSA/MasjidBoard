@@ -179,14 +179,14 @@ h4 {
 }
 
 .timebar {
-    background-color: #045612;
+    
     width: 100%;
 }
 
 .timebar-date {
     /*float: left;*/
     display: inline-block;
-    background-color: #045612;
+    
     color: #ffffff;
     width: 30%;
     font-size: 40px;
@@ -203,6 +203,20 @@ h4 {
    box-shadow: 5px 5px 5px #888888;
    display: inline-block;
 }
+
+
+.float-box-fluid {
+    margin: 8px;
+    padding: 6px;
+    max-width: 300px;
+    
+    /*height: 200px;*/
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px #888888;
+    display: inline-block;
+ }
+ 
+
 
 .box-title {
   font-size: 20px;
@@ -391,6 +405,158 @@ input[type=checkbox]:checked ~ #menu{
 
 /*Responsive Styles*/
 /*For Smaller Screens*/
+
+@media screen and (max-width : 2400px){
+    
+    
+    .float-box {
+        margin: 8px;
+        padding: 6px;
+        max-width: 320px;
+        width: 300px;
+        /*height: 200px;*/
+        border: 1px solid black;
+        box-shadow: 5px 5px 5px #888888;
+        display: inline-block;
+     }
+     
+    
+    .snotice {
+         line-height: 50px;
+         font-size: 35px; 
+    }
+
+    .timebar-date {
+        display: inline-block;
+        background-color: #616161;
+        color: #ffffff;
+        font-size: 44px;
+        padding: 4px 0px;
+    }
+
+    .box-title {
+        font-size: 32px;
+        min-height: 34px;
+    }
+
+    .box-time {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: roboto;
+        font-size: 44px;
+        font-weight: 1000;
+    }
+
+    .block-title{
+        font-size: 36px;
+    }
+
+    .change-date {
+        font-size: 38px;
+    }
+
+    .change-box{
+        height: 140px;
+    }
+
+    .changes{
+        min-height: 38px;
+    }
+
+    .azaan-change{
+        font-size: 38px;
+    }
+
+    .jamaat-change{
+        font-size: 38px;
+    }
+
+    .card-header{
+        font-size: 40px;
+    }
+    .card-text{
+        font-size: 32px;
+    }
+   
+}
+
+
+
+@media screen and (max-width : 1280px){
+    
+    
+    .float-box {
+        margin: 8px;
+        padding: 6px;
+        max-width: 300px;
+        width: 190px;
+        /*height: 200px;*/
+        border: 1px solid black;
+        box-shadow: 5px 5px 5px #888888;
+        display: inline-block;
+     }
+     
+    
+    .snotice {
+         line-height: 35px;
+         font-size: 25px; 
+    }
+
+    .timebar-date {
+        display: inline-block;
+        background-color: #616161;
+        color: #ffffff;
+        font-size: 32px;
+        padding: 4px 0px;
+    }
+
+    
+    .box-title {
+        font-size: 24px;
+    }
+
+    .box-time {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: roboto;
+        font-size: 36px;
+        font-weight: 800;
+    }
+
+    .block-title{
+        font-size: 28px;
+    }
+
+    .change-date {
+        font-size: 28px;
+    }
+
+    .change-box{
+        height: 120px;
+    }
+
+    .changes{
+        min-height: 32px;
+    }
+
+    .azaan-change{
+        font-size: 28px;
+    }
+
+    .jamaat-change{
+        font-size: 28px;
+    }
+
+
+    .card-header{
+        font-size: 32px;
+    }
+    .card-text{
+        font-size: 24px;
+    }
+}
+
+
 @media screen and (max-width : 975px){
     /*Make dropdown links appear inline*/
     ul {
@@ -435,16 +601,26 @@ input[type=checkbox]:checked ~ #menu{
     }
 
     .timebar-date {
-    display: inline-block;
-    background-color: #616161;
-    color: #ffffff;
-    width: 100%;
-    font-size: 28px;
-    padding: 4px 0px;
-}
+        display: inline-block;
+        background-color: #616161;
+        color: #ffffff;
+        width: 100%;
+        font-size: 28px;
+        padding: 4px 0px;
+    }
+
+
+    
+
+    .card-header{
+        font-size: 24px;
+    }
+    .card-text{
+        font-size: 20px;
+    }
 }
 
-@media (min-width: 700px) {
+@media (max-width: 700px) {
     .box-title {
         font-size: 24px;
     }  
@@ -454,5 +630,7 @@ input[type=checkbox]:checked ~ #menu{
     }
     .block-title {
     font-size: 28px;
+    }
 }
-}
+
+.vibrate-1{-webkit-animation:vibrate-1 .3s linear infinite both;animation:vibrate-1 .3s linear infinite both}

@@ -56,6 +56,9 @@ This file stores the global configuration for the website to allow it to be reus
 
     $enableNoticeBoard=true;
 
+    // Skin Colors for the website home screen
+    $themeSkin = "green"; // blue, green,  orange, pink, purple, red
+
 
 
 //
@@ -74,4 +77,3 @@ This file stores the global configuration for the website to allow it to be reus
 
 
 ?>
-
