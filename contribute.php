@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Ubuntu:300" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="kaba.ico">
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./js/islamicdate.js"></script>
     <script type="text/javascript" src="./js/livetime.js"></script>
     <title><?= $masjidName ?> - <?= $masjidArea?></title>

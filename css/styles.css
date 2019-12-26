@@ -482,7 +482,7 @@ input[type=checkbox]:checked ~ #menu{
 
 
 
-@media screen and (max-width : 1280px){
+@media screen and (max-width : 1440px){
     
     
     .float-box {
@@ -519,7 +519,7 @@ input[type=checkbox]:checked ~ #menu{
         padding-top: 10px;
         padding-bottom: 10px;
         font-family: roboto;
-        font-size: 36px;
+        font-size: 32px;
         font-weight: 800;
     }
 

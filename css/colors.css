@@ -1,25 +1,25 @@
 .Fajr {
-  background-color: #0630a2;
+  background-color: #045612;
   color: #ffffff;
 }
 .Zuhr {
-  background-color: #059a05;
+  background-color: #0E9E0E;
   color: #ffffff;
 }
 .Asr {
-  background-color: #d67000;
+  background-color: #045612;
   color: #ffffff;
 }
 .Maghrib {
-  background-color: #b10841;
+  background-color: #0E9E0E;
   color: #ffffff;
 }
 .Esha {
-  background-color: #4a0177;
+  background-color: #045612;
   color: #ffffff;
 }
 .Jumuah {
-  background-color: #059a05;
+  background-color: #0E9E0E;
   color: #ffffff;
 }
 .Zawwal {
@@ -27,7 +27,7 @@
     color: #FFFFFF;
 }
 .Grey {
-    background-color: #505050;
+    background-color: #616161;
     color: #FFFFFF;
 }
 .Black {
@@ -43,4 +43,3 @@
     background-color: #026cd7;
     color: #ffffff;
 }
-
