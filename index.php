@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php require("./config/config.php"); ?>
-<?php 
-    date_default_timezone_set("Asia/Karachi");
+<?php
+    date_default_timezone_set("Africa/Johannesburg");
     $date_now=time();
     $tomorrow = strtotime("tomorrow 00:00:00");
     $seconds_remaining = ($tomorrow-$date_now)+5;
@@ -28,7 +28,7 @@
 <?php include ("navigation.php"); ?>
 <?php #Get Salaah Times for today.
     $date_now=date("Y-m-d");
-    
+
     $month=date("m");
     $date=date("d");
     $day=date("l");
@@ -68,12 +68,12 @@
     $esha_c_date=null;
     $esha_c_athaan=null;
     $esha_c_salaah=null;
-   
+
     $changeperiod=$displayChangesWithinDays;
     // var_dump($date_now);die();
     if ($stmt = $conn->prepare("select fajr_athaan, fajr_salaah, zuhr_athaan, zuhr_salaah, asr_athaan, asr_salaah, magrib_athaan, magrib_salaah, esha_athaan, esha_salaah, jummah_athaan, jummah_salaah FROM m_timetable where sdate =?")) {
         /* bind parameters for markers */
-       
+
         $stmt->bind_param("s", $date_now);
         /* execute query */
         $stmt->execute();
@@ -83,7 +83,7 @@
         if ($stmt->num_rows == 1) {
           $stmt->bind_result($fajr_athaan, $fajr_salaah, $zuhr_athaan, $zuhr_salaah, $asr_athaan, $asr_salaah, $magrib_athaan, $magrib_salaah, $esha_athaan, $esha_salaah, $jummah_athaan, $jummah_salaah);
           $stmt->fetch();
-          
+
         }
         /* close stmt */
         $stmt->close();
@@ -303,9 +303,7 @@
         include ("includes/salaahtimechanges.php");
     }
 
-    
         include ("includes/notifications.php");
-    
 ?>
 
 <div style="height='30px'">

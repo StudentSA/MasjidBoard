@@ -34,14 +34,14 @@
                 columns: [
                     {data: 'month', type: 'numeric', readOnly: true},
                     {data: 'date', type: 'numeric', readOnly: true},
-                    {data: 'sehri', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'fajr', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'sunrise', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'zawal', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'asr_s', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'asr_h', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'maghrib', type: 'time', timeFormat: 'hh:mm', correctFormat: true},
-                    {data: 'esha', type: 'time', timeFormat: 'hh:mm', correctFormat: true}
+                    {data: 'sehri', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'fajr', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'sunrise', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'zawal', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'asr_s', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'asr_h', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'maghrib', type: 'time', timeFormat: 'HH:mm', correctFormat: true},
+                    {data: 'esha', type: 'time', timeFormat: 'HH:mm', correctFormat: true}
                 ],
                 filters: false,
                 dropdownMenu: false,

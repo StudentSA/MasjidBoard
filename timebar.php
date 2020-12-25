@@ -1,4 +1,4 @@
-<?php 
+<?php
     date_default_timezone_set("Africa/Johannesburg");
     $edate=date("l, j F");
 ?>
